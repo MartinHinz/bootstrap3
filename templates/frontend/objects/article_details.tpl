@@ -87,53 +87,6 @@
 					{/if}
 				{/foreach}
 			</div>
-
-		</section><!-- .article-sidebar -->
-
-		<div class="col-md-8">
-			<section class="article-main">
-
-				{* Screen-reader heading for easier navigation jumps *}
-				<h2 class="sr-only">{translate key="plugins.themes.bootstrap3.article.main"}</h2>
-
-				{if $article->getAuthors()}
-					<div class="authors">
-						{foreach from=$article->getAuthors() item=author}
-							<strong>{$author->getFullName()|escape}</strong>
-							{if $author->getLocalizedAffiliation()}
-								<div class="article-author-affilitation">
-									{$author->getLocalizedAffiliation()|escape}
-								</div>
-							{/if}
-							{if $author->getOrcid()}
-								<span class="orcid">
-									<a href="{$author->getOrcid()|escape}" target="_blank">
-										<img src="//orcid.org/sites/default/files/images/orcid_16x16.png">
-										{$author->getOrcid()|escape}
-									</a>
-								</span>
-							{/if}
-						{/foreach}
-					</div>
-				{/if}
-
-				{* Article abstract *}
-				{if $article->getLocalizedAbstract()}
-					<div class="article-summary" id="summary">
-						<h2>{translate key="article.abstract"}</h2>
-						<div class="article-abstract">
-							{$article->getLocalizedAbstract()|strip_unsafe_html|nl2br}
-						</div>
-					</div>
-				{/if}
-
-				{* Keywords *}
-				{* @todo keywords not yet implemented *}
-
-				{call_hook name="Templates::Article::Main"}
-
-			</section><!-- .article-main -->
-
 			<section class="article-more-details">
 
 				{* Screen-reader heading for easier navigation jumps *}
@@ -206,55 +159,55 @@
 					</div>
 				{/if}
 
-				{* Issue article appears in *}
-				<div class="panel panel-default issue">
-					<div class="panel-heading">
-						{translate key="issue.issue"}
-					</div>
-					<div class="panel-body">
-						<a class="title" href="{url page="issue" op="view" path=$issue->getBestIssueId($currentJournal)}">
-							{$issue->getIssueIdentification()}
-						</a>
-
-					</div>
-				</div>
-
-				{if $section}
-					<div class="panel panel-default section">
-						<div class="panel-heading">
-							{translate key="section.section"}
-						</div>
-						<div class="panel-body">
-							{$section->getLocalizedTitle()|escape}
-						</div>
-					</div>
-				{/if}
-
-				{* Licensing info *}
-				{if $copyright || $licenseUrl}
-					<div class="panel panel-default copyright">
-						<div class="panel-body">
-							{if $licenseUrl}
-								{if $ccLicenseBadge}
-									{$ccLicenseBadge}
-								{else}
-									<a href="{$licenseUrl|escape}" class="copyright">
-										{if $copyrightHolder}
-											{translate key="submission.copyrightStatement" copyrightHolder=$copyrightHolder copyrightYear=$copyrightYear}
-										{else}
-											{translate key="submission.license"}
-										{/if}
-									</a>
-								{/if}
-							{/if}
-							{$copyright}
-						</div>
-					</div>
-				{/if}
-
 				{call_hook name="Templates::Article::Details"}
 
 			</section><!-- .article-details -->
+		</section><!-- .article-sidebar -->
+
+		<div class="col-md-8">
+			<section class="article-main">
+
+				{* Screen-reader heading for easier navigation jumps *}
+				<h2 class="sr-only">{translate key="plugins.themes.bootstrap3.article.main"}</h2>
+
+				{if $article->getAuthors()}
+					<div class="authors">
+						{foreach from=$article->getAuthors() item=author}
+							<strong>{$author->getFullName()|escape}</strong>
+							{if $author->getLocalizedAffiliation()}
+								<div class="article-author-affilitation">
+									{$author->getLocalizedAffiliation()|escape}
+								</div>
+							{/if}
+							{if $author->getOrcid()}
+								<span class="orcid">
+									<a href="{$author->getOrcid()|escape}" target="_blank">
+										<img src="//orcid.org/sites/default/files/images/orcid_16x16.png">
+										{$author->getOrcid()|escape}
+									</a>
+								</span>
+							{/if}
+						{/foreach}
+					</div>
+				{/if}
+
+				{* Article abstract *}
+				{if $article->getLocalizedAbstract()}
+					<div class="article-summary" id="summary">
+						<h2>{translate key="article.abstract"}</h2>
+						<div class="article-abstract">
+							{$article->getLocalizedAbstract()|strip_unsafe_html|nl2br}
+						</div>
+					</div>
+				{/if}
+
+				{* Keywords *}
+				{* @todo keywords not yet implemented *}
+
+				{call_hook name="Templates::Article::Main"}
+
+			</section><!-- .article-main -->
+
 		</div><!-- .col-md-8 -->
 	</div><!-- .row -->
 
