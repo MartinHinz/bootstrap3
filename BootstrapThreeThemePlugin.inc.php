@@ -45,6 +45,7 @@ class BootstrapThreeThemePlugin extends ThemePlugin {
 				'superhero'  => 'plugins.themes.bootstrap3.options.bootstrapTheme.superhero',
 				'united'     => 'plugins.themes.bootstrap3.options.bootstrapTheme.united',
 				'yeti'       => 'plugins.themes.bootstrap3.options.bootstrapTheme.yeti',
+				'jna'        => 'plugins.themes.bootstrap3.options.bootstrapTheme.jna',
 			)
 		));
 
